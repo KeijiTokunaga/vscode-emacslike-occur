@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:hello.helloWorld"
+    "onCommand:emacslike.occur"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "hello.helloWorld",
-        "title": "Hello World"
+        "command": "emacslike.occur",
+        "title": "occur"
       }
     ]
   },

@@ -68,3 +68,23 @@ Ensure that you've read through the extensions guidelines and follow the best pr
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
+
+# 参考
+
+https://clickan.click/vsc-list-api/
+
+https://code.visualstudio.com/api/references/vscode-api
+
+{
+  "key": "alt+x",
+  "command": "workbench.action.showCommands",
+  "when": "!config.emacs-mcx.useMetaPrefixMacCmd"
+}
+
+https://techblog.gmo-ap.jp/2020/12/28/vscode-extension-dev/
+
+https://blog.sushi.money/entry/2018/08/18/163959
+
+https://blog.koh.dev/2019-11-22-vscode-zenvim/
+
+https://techblog.gmo-ap.jp/2020/12/28/vscode-extension-dev/
