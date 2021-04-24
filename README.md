@@ -87,4 +87,5 @@ https://blog.sushi.money/entry/2018/08/18/163959
 
 https://blog.koh.dev/2019-11-22-vscode-zenvim/
 
-https://techblog.gmo-ap.jp/2020/12/28/vscode-extension-dev/
+https://github.com/microsoft/vscode-textbuffer
+
