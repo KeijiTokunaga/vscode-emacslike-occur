@@ -89,3 +89,10 @@ https://blog.koh.dev/2019-11-22-vscode-zenvim/
 
 https://github.com/microsoft/vscode-textbuffer
 
+{
+  "key": "ctrl+x 2",
+  "command": "workbench.action.splitEditorDown",
+  "when": "!terminalFocus"
+}
+
+https://github.com/vscode-doc-jp/Docs/blob/master/getstarted/keybindings.md

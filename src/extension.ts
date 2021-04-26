@@ -16,7 +16,8 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('emacslike.occur', async () => {
 		let what = await vscode.window.showInputBox({ placeHolder: 'List lines matching regexp (default build):' });
 		if (what) {
-		  vscode.window.showInformationMessage(what);
+		  // vscode.window.showInformationMessage(what);
+		  vscode.commands.executeCommand('workbench.action.splitEditorDown');
 		}
 	});
 
