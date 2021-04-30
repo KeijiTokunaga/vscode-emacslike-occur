@@ -71,28 +71,63 @@ Ensure that you've read through the extensions guidelines and follow the best pr
 
 # 参考
 
+## Visual Studio Codeのコマンドパレットでリスト(Quick Pick)を出す方法
 https://clickan.click/vsc-list-api/
 
+## VS Code API(公式)
 https://code.visualstudio.com/api/references/vscode-api
 
+
+## VSCodeの拡張開発に入門してみました
+https://techblog.gmo-ap.jp/2020/12/28/vscode-extension-dev/
+
+## 雑なVSCode拡張を作ろう #kyotoasterisk
+https://blog.sushi.money/entry/2018/08/18/163959
+
+## VSCodeにZenVimというVim拡張を作った
+https://blog.koh.dev/2019-11-22-vscode-zenvim/
+
+## vscode-textbuffer(github)
+https://github.com/microsoft/vscode-textbuffer
+
+
+## Docs/getstarted/keybindings.md(github)
+https://github.com/vscode-doc-jp/Docs/blob/master/getstarted/keybindings.md
+
+## VSCodeでマクロ(スクリプト)を実現する方法【拡張作成編】
+https://www.exceedsystem.net/2020/11/08/how-to-create-extension-as-macro-in-vscode/
+
+## Visual Studio Codeの拡張機能で外部コマンドを実行したい
+https://blog.okazuki.jp/entry/2016/08/29/222739
+
+## VSCodeでDoxygenのプレビューをしたい！
+https://qiita.com/hakua-doublemoon/items/c328a7bf0bc7a1fbef14
+
+## Visual Studio Code API コマンド編 -vscode.commands-
+https://clickan.click/vscode-command/
+
+Commands(公式)
+https://code.visualstudio.com/api/extension-guides/command
+
+## // ざっくりとイメージをつかむための Visual Studio Code 拡張機能開発入門
+https://qiita.com/sta/items/979f6d6eafcc74f01723
+
+## Key Bindings for Visual Studio Code(公式)
+https://code.visualstudio.com/docs/getstarted/keybindings
+
+
+## キーバインディング参考
+
+## コマンドパレットOpne
 {
   "key": "alt+x",
   "command": "workbench.action.showCommands",
   "when": "!config.emacs-mcx.useMetaPrefixMacCmd"
 }
 
-https://techblog.gmo-ap.jp/2020/12/28/vscode-extension-dev/
-
-https://blog.sushi.money/entry/2018/08/18/163959
-
-https://blog.koh.dev/2019-11-22-vscode-zenvim/
-
-https://github.com/microsoft/vscode-textbuffer
-
+## 画面分割
 {
   "key": "ctrl+x 2",
   "command": "workbench.action.splitEditorDown",
   "when": "!terminalFocus"
 }
-
-https://github.com/vscode-doc-jp/Docs/blob/master/getstarted/keybindings.md
