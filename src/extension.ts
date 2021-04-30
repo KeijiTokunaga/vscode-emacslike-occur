@@ -1,28 +1,74 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+"use strict";
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+import * as vscode from "vscode";
+import {
+  Disposable,
+  ExtensionContext,
+  Range,
+  TextEditor,
+  TextEditorDecorationType,
+} from "vscode";
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "hello" is now active!');
+export async function activate(context: vscode.ExtensionContext) {
+  console.log('Congratulations, your extension "hello" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('emacslike.occur', async () => {
-		let what = await vscode.window.showInputBox({ placeHolder: 'List lines matching regexp (default build):' });
-		if (what) {
-		  // vscode.window.showInformationMessage(what);
-		  vscode.commands.executeCommand('workbench.action.splitEditorDown');
-		}
-	});
+  let disposable = vscode.commands.registerCommand(
+    "emacslike.occur",
+    async () => {
+      let what = await vscode.window.showInputBox({
+        placeHolder: "List lines matching regexp (default build):",
+      });
+	  if (what){
+		  console.log(what);
+	  }
+	 
+	 
+	  if (what) {
 
-	context.subscriptions.push(disposable);
+        let editor: vscode.TextEditor = getEditor();
+        /*
+        let destPos = new vscode.Position(0, 1);
+        let destSel = new vscode.Selection(destPos, destPos); // 範囲選択しないなら同じ Position を指定すれば良い
+        editor.selection = destSel;
+		*/
+        /*
+			const f = (editBuilder: vscode.TextEditorEdit): void => {
+				editBuilder.insert(destPos, 'insert|');
+			};
+			await editor.edit(f);
+*/
+
+//        let ranges: Range[] = [];
+        //let match: RegExpExecArray | null | undefined;
+
+        const lines = editor.document.getText().split("\n");
+        lines.map((x,index) => {
+          const found = x.match(what);
+		  if (found){
+			console.log(found);
+		  }
+        });
+
+        /*
+        let regexp = new RegExp(what, "g");
+        let match = editor.document.getText().match(regexp);
+        console.log(match);
+		*/
+
+        vscode.commands.executeCommand("workbench.action.splitEditorDown");
+      }
+    }
+  );
+
+  context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
 export function deactivate() {}
+
+const getEditor = (): vscode.TextEditor => {
+  let editor = vscode.window.activeTextEditor;
+  if (editor === undefined) {
+    throw new Error("activeTextEditor is null currently.");
+  }
+  return editor;
+};

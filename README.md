@@ -77,7 +77,6 @@ https://clickan.click/vsc-list-api/
 ## VS Code API(公式)
 https://code.visualstudio.com/api/references/vscode-api
 
-
 ## VSCodeの拡張開発に入門してみました
 https://techblog.gmo-ap.jp/2020/12/28/vscode-extension-dev/
 
@@ -89,7 +88,6 @@ https://blog.koh.dev/2019-11-22-vscode-zenvim/
 
 ## vscode-textbuffer(github)
 https://github.com/microsoft/vscode-textbuffer
-
 
 ## Docs/getstarted/keybindings.md(github)
 https://github.com/vscode-doc-jp/Docs/blob/master/getstarted/keybindings.md
@@ -106,16 +104,20 @@ https://qiita.com/hakua-doublemoon/items/c328a7bf0bc7a1fbef14
 ## Visual Studio Code API コマンド編 -vscode.commands-
 https://clickan.click/vscode-command/
 
-Commands(公式)
+## Commands(公式)
 https://code.visualstudio.com/api/extension-guides/command
 
-## // ざっくりとイメージをつかむための Visual Studio Code 拡張機能開発入門
-https://qiita.com/sta/items/979f6d6eafcc74f01723
+## ざっくりとイメージをつかむための Visual Studio Code 拡張機能開発入門
+https://qiita.com/sta/items/979f6d6eafcc74f01723 (おすすめ)
 
 ## Key Bindings for Visual Studio Code(公式)
 https://code.visualstudio.com/docs/getstarted/keybindings
 
+## 次の一歩
+https://qiita.com/RAWSEQ/items/7c53596754d2a102499f
 
+## VS CodeのExtension カーソル下のファイルパスを開く、行番号が付加されていたらその行に移動、かなりカスカスな実装
+https://gist.github.com/beru/87d3ff19d5553a10583b7aea7543f3a5
 ## キーバインディング参考
 
 ## コマンドパレットOpne
@@ -131,3 +133,7 @@ https://code.visualstudio.com/docs/getstarted/keybindings
   "command": "workbench.action.splitEditorDown",
   "when": "!terminalFocus"
 }
+
+
+## Haxe Doc
+https://vshaxe.github.io/vscode-extern/vscode/TextEditorEdit.html
