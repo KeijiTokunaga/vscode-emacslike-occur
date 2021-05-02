@@ -134,6 +134,11 @@ https://gist.github.com/beru/87d3ff19d5553a10583b7aea7543f3a5
   "when": "!terminalFocus"
 }
 
+{
+  "key": "ctrl+x o",
+  "command": "workbench.action.navigateEditorGroups",
+  "when": "!terminalFocus"
+}
 
 ## Haxe Doc
 https://vshaxe.github.io/vscode-extern/vscode/TextEditorEdit.html
