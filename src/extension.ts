@@ -1,5 +1,7 @@
 import * as vscode from "vscode";
-import { getEditor, type , jumpCursor} from "./util";
+import { getEditor, type , closeOccurBuffer} from "./util";
+import { tmpdir } from 'os';
+import { promises as fs } from 'fs';
 
 export let targetBuffer:vscode.TextEditor;
 export let occurBuffer:vscode.TextEditor;
@@ -11,6 +13,11 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(vscode.commands.registerCommand(key, handler));
   };
 
+  let basePath = tmpdir()+"/"; //テンポラリディレクトリ
+  let fileNameEditor = "vscode-external-process-editor_occur.txt"; //ファイル名
+  let filePathEditor = basePath+fileNameEditor; //テンポラリファイルパス
+  fs.unlink(filePathEditor);
+
   // occur動作
   register("emacslike.occur", async () => {
     const what = await vscode.window.showInputBox({
@@ -19,7 +26,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
     if (what) {
       // occur結果の作成
-      let matchlines: string = "*occur*\n";
+      let matchlines: string = "";
       targetBuffer = getEditor();
       const regexp = new RegExp(what);
       const lines = targetBuffer.document.getText().split("\n");
@@ -32,7 +39,8 @@ export async function activate(context: vscode.ExtensionContext) {
 
       // occur結果用のウィンドウ操作
       await vscode.commands.executeCommand("workbench.action.splitEditorDown");
-      const doc = await vscode.workspace.openTextDocument();
+      await fs.writeFile(filePathEditor, matchlines);
+      const doc = await vscode.workspace.openTextDocument(filePathEditor);
       await vscode.window.showTextDocument(doc, { preview: false });
       await vscode.commands.executeCommand(
         "workbench.action.nextEditorInGroup"
@@ -42,11 +50,9 @@ export async function activate(context: vscode.ExtensionContext) {
       );
 
       occurBuffer = getEditor();
+      
       // occur結果の格納
       const destPos = new vscode.Position(0, 0);
-      await occurBuffer.edit((edit) => {
-        edit.insert(destPos, matchlines);
-      });
       const destSel = new vscode.Selection(destPos, destPos); 
       occurBuffer.selection = destSel;
     }

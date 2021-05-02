@@ -50,6 +50,7 @@
     "webpack-cli": "^4.4.0"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
     "vscode-textbuffer": "^1.0.0"
   }
 }
