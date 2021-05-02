@@ -142,3 +142,10 @@ https://gist.github.com/beru/87d3ff19d5553a10583b7aea7543f3a5
 
 ## Haxe Doc
 https://vshaxe.github.io/vscode-extern/vscode/TextEditorEdit.html
+
+## 新規ウィンドの開き方の参考
+https://github.com/kawamurakazushi/vscode-smart-split
+
+
+## コマンド一覧
+https://murashun.jp/article/programming/visual-studio-code/shortcut-keys.html
