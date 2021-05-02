@@ -1,6 +1,7 @@
 {
-  "name": "hello",
-  "displayName": "hello",
+  "name": "EmacsLikeOccur",
+  "displayName": "EmacsLikeOccur",
+  "publisher": "KeijiTokunaga",
   "description": "",
   "version": "0.0.1",
   "engines": {
