@@ -9,16 +9,13 @@ export const getEditor = (): vscode.TextEditor => {
   return editor;
 };
 
+// occurバッファだけで動作する
 export const type = async (editor: vscode.TextEditor, text: string) => {
   let lineContent;
   
   if (text === "n") {
     moveCursor({ to: "down" });
-
     let pos = occurBuffer.selection.active;
-    console.log("A:" + occurBuffer.document.lineCount);
-    console.log("B:" + pos.line);
-
     if (pos.line + 1 === occurBuffer.document.lineCount) {
       return;
     }
@@ -36,6 +33,7 @@ export const type = async (editor: vscode.TextEditor, text: string) => {
     );
   }
 
+  // ターゲットバッファ内のカーソル移動
   if (lineContent) {
     let parts = lineContent.split(/^(\d+):/);
     let path = parts[1];
@@ -54,7 +52,7 @@ export const jumpCursor = (
   }
 
   const anchor = new vscode.Position(line, charactor);
-  const active = new vscode.Position(line, charactor);
+  const active = new vscode.Position(line, 1000);
 
   // jump
   editor.selection = new vscode.Selection(anchor, active);

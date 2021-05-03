@@ -14,9 +14,14 @@ export async function activate(context: vscode.ExtensionContext) {
   };
 
   let basePath = tmpdir()+"/"; //テンポラリディレクトリ
-  let fileNameEditor = "vscode-external-process-editor_occur.txt"; //ファイル名
+  let fileNameEditor = "vscode-external-process-editor-occur"; //ファイル名(拡張子はターゲットの言語似合わせる)
   let filePathEditor = basePath+fileNameEditor; //テンポラリファイルパス
-  fs.unlink(filePathEditor);
+  
+  let files = await fs.readdir(basePath);
+  files.filter(name => /vscode-external-process-editor-occur.+/.test(name)).map(f => {
+    console.log(f);
+    fs.unlink(basePath+f);
+  });
 
   // occur動作
   register("emacslike.occur", async () => {
@@ -28,6 +33,10 @@ export async function activate(context: vscode.ExtensionContext) {
       // occur結果の作成
       let matchlines: string = "";
       targetBuffer = getEditor();
+      let suffix = targetBuffer.document.uri.fsPath.match(/[^.]+$/);
+      if (suffix !== null){
+        filePathEditor = filePathEditor + '.'+suffix[0];
+      }
       const regexp = new RegExp(what);
       const lines = targetBuffer.document.getText().split("\n");
       lines.map((x, index) => {
@@ -58,7 +67,7 @@ export async function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  // キーハンドリング
+  // キーハンドリング(occurバッファとそれ以外)
   register("type", (e) => {
     if (!vscode.window.activeTextEditor) {
       return;
