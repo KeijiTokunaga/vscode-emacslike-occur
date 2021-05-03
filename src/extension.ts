@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { getEditor, type , closeOccurBuffer} from "./util";
+import { getEditor, type , selectDecorationType} from "./util";
 import { tmpdir } from 'os';
 import { promises as fs } from 'fs';
 
@@ -48,6 +48,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
       // occur結果用のウィンドウ操作
       await vscode.commands.executeCommand("workbench.action.splitEditorDown");
+      console.log('out:'+filePathEditor);
       await fs.writeFile(filePathEditor, matchlines);
       const doc = await vscode.workspace.openTextDocument(filePathEditor);
       await vscode.window.showTextDocument(doc, { preview: false });
@@ -59,7 +60,22 @@ export async function activate(context: vscode.ExtensionContext) {
       );
 
       occurBuffer = getEditor();
-      
+
+      // occurのキーワードを目立たせる
+      const regEx = new RegExp(what,"g");
+      const text = occurBuffer.document.getText();
+      const smallNumbers: vscode.DecorationOptions[] = [];
+      let match;
+      while ((match = regEx.exec(text))) {
+        console.log(match);
+        const startPos = occurBuffer.document.positionAt(match.index);
+        const endPos = occurBuffer.document.positionAt(match.index + match[0].length);
+        const decoration = { range: new vscode.Range(startPos, endPos)};
+        smallNumbers.push(decoration);
+      }
+      occurBuffer.setDecorations(selectDecorationType, smallNumbers);
+
+
       // occur結果の格納
       const destPos = new vscode.Position(0, 0);
       const destSel = new vscode.Selection(destPos, destPos); 

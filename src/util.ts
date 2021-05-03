@@ -12,7 +12,7 @@ export const getEditor = (): vscode.TextEditor => {
 // occurバッファだけで動作する
 export const type = async (editor: vscode.TextEditor, text: string) => {
   let lineContent;
-  
+
   if (text === "n") {
     moveCursor({ to: "down" });
     let pos = occurBuffer.selection.active;
@@ -27,10 +27,9 @@ export const type = async (editor: vscode.TextEditor, text: string) => {
       return;
     }
     lineContent = occurBuffer.document.lineAt(pos.line - 1).text;
-  }else if(text === '\n'){
-    await vscode.commands.executeCommand(
-      "workbench.action.closeActiveEditor"
-    );
+  } else if (text === "\n" || text === "q") {
+    await vscode.commands.executeCommand("workbench.action.closeActiveEditor");
+    selectDecorationType.dispose();
   }
 
   // ターゲットバッファ内のカーソル移動
@@ -53,6 +52,8 @@ export const jumpCursor = (
 
   const anchor = new vscode.Position(line, charactor);
   const active = new vscode.Position(line, 1000);
+  const decoration = { range: new vscode.Range(anchor, active)};
+  editor.setDecorations(selectDecorationType,[decoration]);
 
   // jump
   editor.selection = new vscode.Selection(anchor, active);
@@ -70,24 +71,20 @@ export const moveCursor = async (options: {
   await vscode.commands.executeCommand("cursorMove", options);
 };
 
-export const closeOccurBuffer = async () => {
-  const first = vscode.window.activeTextEditor;
-
-  while (1) {
-    await vscode.commands.executeCommand("workbench.action.nextEditorInGroup");
-
-    if (vscode.window.activeTextEditor === occurBuffer) {
-      await vscode.commands.executeCommand(
-        "workbench.action.closeActiveEditor"
-      );
-      return;
-    }
-
-    if (vscode.window.activeTextEditor === first) {
-      await vscode.commands.executeCommand(
-        "workbench.action.closeActiveEditor"
-      );
-      return;
-    }
+// create a decorator type that we use to decorate large numbers
+export const selectDecorationType = vscode.window.createTextEditorDecorationType(
+  {
+    borderWidth: "1px",
+    borderStyle: "solid",
+    light: {
+      // this color will be used in light color themes
+      borderColor: "darkblue",
+      backgroundColor: "FF000055",
+    },
+    dark: {
+      // this color will be used in dark color themes
+      borderColor: "lightblue",
+      backgroundColor: "FF000055",
+    },
   }
-};
+);
