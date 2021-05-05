@@ -3,7 +3,7 @@
   "displayName": "EmacsLikeOccur",
   "publisher": "KeijiTokunaga",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.55.0"
   },
@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "vsce": "^1.88.0",
     "vscode-textbuffer": "^1.0.0"
   }
 }

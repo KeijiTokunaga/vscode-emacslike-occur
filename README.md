@@ -145,3 +145,13 @@ https://github.com/kawamurakazushi/vscode-smart-split
 
 ## コマンド一覧
 https://murashun.jp/article/programming/visual-studio-code/shortcut-keys.html
+
+
+## ライフサイクル
+onDidChangeActiveTextEditor
+
+## マークダウンキャット
+https://poyonshot.hatenablog.com/archive/category/vscode
+
+## コマンド以外の実行方法
+https://qiita.com/rma/items/3fdd8b09db115188b8f0

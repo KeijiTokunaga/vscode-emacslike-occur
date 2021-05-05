@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { occurBuffer, targetBuffer } from "./extension";
+import { occurBuffer, targetBuffer, selectDecorationType } from "./extension";
 
 export const getEditor = (): vscode.TextEditor => {
   let editor = vscode.window.activeTextEditor;
@@ -9,7 +9,7 @@ export const getEditor = (): vscode.TextEditor => {
   return editor;
 };
 
-// occurバッファだけで動作する
+// occurバッファでの特動作ｄ
 export const type = async (editor: vscode.TextEditor, text: string) => {
   let lineContent;
 
@@ -70,21 +70,3 @@ export const moveCursor = async (options: {
 }) => {
   await vscode.commands.executeCommand("cursorMove", options);
 };
-
-// create a decorator type that we use to decorate large numbers
-export const selectDecorationType = vscode.window.createTextEditorDecorationType(
-  {
-    borderWidth: "1px",
-    borderStyle: "solid",
-    light: {
-      // this color will be used in light color themes
-      borderColor: "darkblue",
-      backgroundColor: "FF000055",
-    },
-    dark: {
-      // this color will be used in dark color themes
-      borderColor: "lightblue",
-      backgroundColor: "FF000055",
-    },
-  }
-);
