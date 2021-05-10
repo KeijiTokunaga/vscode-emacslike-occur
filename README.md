@@ -19,7 +19,7 @@ Without taking your hands off the keyboard, check the list of grep results in th
  
 # Author
  
-* KeijiTokunaga
+KeijiTokunaga
  
 # License
  
