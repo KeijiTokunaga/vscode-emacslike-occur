@@ -17,10 +17,6 @@ Without taking your hands off the keyboard, check the list of grep results in th
 1. Select the grep result by moving the cursor up and down with N/P
 1. By pressing Return, close the grep result and jump to the corresponding buffer
  
-# Note
- 
-注意点などがあれば書く
- 
 # Author
  
 * KeijiTokunaga
