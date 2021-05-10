@@ -6,7 +6,8 @@
 # Features
  
 Without taking your hands off the keyboard, check the list of grep results in the buffer. From the results, you can jump to the corresponding buffer.
- 
+
+<img width="1440" alt="grep result" src="https://user-images.githubusercontent.com/70827415/117682992-954b3980-b1ee-11eb-931e-91b999b91d84.png">
 
 # Usage
  
