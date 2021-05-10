@@ -1,71 +1,37 @@
-## Features
+# EmacsLike Occurmode for VSCode
+ 
+ A simple grep function that works similar to Emacs' occur mode.
+ 
+ 
+# Features
+ 
+Without taking your hands off the keyboard, check the list of grep results in the buffer. From the results, you can jump to the corresponding buffer.
+ 
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+# Usage
+ 
+1. Open the VSCode command palette  
+1. Type 'occur
+1. Enter a search term
+1. The search results will be displayed in the spread window
+1. Select the grep result by moving the cursor up and down with N/P
+1. By pressing Return, close the grep result and jump to the corresponding buffer
+ 
+# Note
+ 
+注意点などがあれば書く
+ 
+# Author
+ 
+* KeijiTokunaga
+ 
+# License
+ 
+"EmacsLike Occurmode for VSCode" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
-For example if there is an image subfolder under your extension project workspace:
+**Enjoy!**  
 
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
-
-# 参考
+# Reference sites (Thanks!)
 
 ## Visual Studio Codeのコマンドパレットでリスト(Quick Pick)を出す方法
 https://clickan.click/vsc-list-api/
@@ -114,7 +80,24 @@ https://qiita.com/RAWSEQ/items/7c53596754d2a102499f
 
 ## VS CodeのExtension カーソル下のファイルパスを開く、行番号が付加されていたらその行に移動、かなりカスカスな実装
 https://gist.github.com/beru/87d3ff19d5553a10583b7aea7543f3a5
-## キーバインディング参考
+
+## Haxe Doc
+https://vshaxe.github.io/vscode-extern/vscode/TextEditorEdit.html
+
+## 新規ウィンドの開き方の参考
+https://github.com/kawamurakazushi/vscode-smart-split
+
+## コマンド一覧
+https://murashun.jp/article/programming/visual-studio-code/shortcut-keys.html
+
+## ライフサイクル
+onDidChangeActiveTextEditor
+
+## マークダウンキャット
+https://poyonshot.hatenablog.com/archive/category/vscode
+
+## コマンド以外の実行方法
+https://qiita.com/rma/items/3fdd8b09db115188b8f0
 
 ## コマンドパレットOpne
 {
@@ -135,23 +118,3 @@ https://gist.github.com/beru/87d3ff19d5553a10583b7aea7543f3a5
   "command": "workbench.action.navigateEditorGroups",
   "when": "!terminalFocus"
 }
-
-## Haxe Doc
-https://vshaxe.github.io/vscode-extern/vscode/TextEditorEdit.html
-
-## 新規ウィンドの開き方の参考
-https://github.com/kawamurakazushi/vscode-smart-split
-
-
-## コマンド一覧
-https://murashun.jp/article/programming/visual-studio-code/shortcut-keys.html
-
-
-## ライフサイクル
-onDidChangeActiveTextEditor
-
-## マークダウンキャット
-https://poyonshot.hatenablog.com/archive/category/vscode
-
-## コマンド以外の実行方法
-https://qiita.com/rma/items/3fdd8b09db115188b8f0
