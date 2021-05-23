@@ -1,9 +1,9 @@
 {
-  "name": "EmacsLikeOccur",
+  "name": "emacs-like-occur",
   "displayName": "EmacsLikeOccur",
   "publisher": "KeijiTokunaga",
   "description": "",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "engines": {
     "vscode": "^1.55.0"
   },
@@ -15,6 +15,18 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "keybindings": [
+      {
+        "command": "occurType.curDown",
+        "key": "ctrl+n",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "occurType.curUp",
+        "key": "ctrl+p",
+        "when": "editorTextFocus"
+      }
+    ],
     "commands": [
       {
         "command": "emacslike.occur",

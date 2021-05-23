@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { getEditor, type } from "./util";
+import { getEditor, occurType } from "./util";
 import { tmpdir } from "os";
 import { promises as fs } from "fs";
 
@@ -45,7 +45,7 @@ export async function activate(context: vscode.ExtensionContext) {
       });
 
     const what = await vscode.window.showInputBox({
-      placeHolder: "List lines matching regexp (default build):",
+      placeHolder: "List lines matching regexp:",
     });
 
     if (what) {
@@ -54,7 +54,8 @@ export async function activate(context: vscode.ExtensionContext) {
       targetBuffer = getEditor();
       let suffix = targetBuffer.document.uri.fsPath.match(/[^.]+$/);
       if (suffix !== null) {
-        filePathEditor = filePathEditor + "." + suffix[0];
+        //filePathEditor = filePathEditor + "." + suffix[0];
+        filePathEditor = filePathEditor + ".txt";
       }
       const regexp = new RegExp(what);
       const lines = targetBuffer.document.getText().split("\n");
@@ -103,6 +104,33 @@ export async function activate(context: vscode.ExtensionContext) {
     }
   });
 
+  register('occurType.curUp', () => {
+    console.log('occurType.curUp');
+    if (!vscode.window.activeTextEditor) {
+      return;
+    }
+    if (vscode.window.activeTextEditor === occurBuffer) {
+      occurType(vscode.window.activeTextEditor,'p');
+    }
+  });
+
+
+  emacs-mcx.previousLine
+
+  register('occurType.curDown', () => {
+    console.log('occurType.curDown');
+    if (!vscode.window.activeTextEditor) {
+      return;
+    }
+    if (vscode.window.activeTextEditor !== occurBuffer) {
+      // 通常のVSCodeの入力処理
+      vscode.commands.executeCommand("emacs-mcx.nextLine");
+      return;
+    }
+      occurType(vscode.window.activeTextEditor,'n');
+
+  });
+
   // キーハンドリング(occurバッファとそれ以外)
   register("type", (e) => {
     if (!vscode.window.activeTextEditor) {
@@ -118,7 +146,7 @@ export async function activate(context: vscode.ExtensionContext) {
     }
 
     try {
-      type(vscode.window.activeTextEditor, e.text);
+      occurType(vscode.window.activeTextEditor, e.text);
     } catch (error) {
       console.error(error);
     }

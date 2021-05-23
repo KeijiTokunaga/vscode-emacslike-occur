@@ -9,18 +9,18 @@ export const getEditor = (): vscode.TextEditor => {
   return editor;
 };
 
-// occurバッファでの特動作ｄ
-export const type = async (editor: vscode.TextEditor, text: string) => {
+// occurバッファでの特動作
+export const occurType = async (editor: vscode.TextEditor, text: string) => {
   let lineContent;
 
-  if (text === "n") {
+  if (text === "n" || text === "j") {
     moveCursor({ to: "down" });
     let pos = occurBuffer.selection.active;
     if (pos.line + 1 === occurBuffer.document.lineCount) {
       return;
     }
     lineContent = occurBuffer.document.lineAt(pos.line + 1).text;
-  } else if (text === "p") {
+  } else if (text === "p" || text === "k") {
     moveCursor({ to: "up" });
     let pos = occurBuffer.selection.active;
     if (pos.line === 0) {

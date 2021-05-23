@@ -96,6 +96,13 @@ https://poyonshot.hatenablog.com/archive/category/vscode
 ## コマンド以外の実行方法
 https://qiita.com/rma/items/3fdd8b09db115188b8f0
 
+## 英語の拡張機能を作成した
+https://blog.cfm-art.net/archives/1106
+
+
+## 拡張のベース
+https://satopirka.com/2017/12/vscode-extension/
+
 ## コマンドパレットOpne
 {
   "key": "alt+x",
