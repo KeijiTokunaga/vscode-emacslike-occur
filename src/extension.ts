@@ -1,6 +1,8 @@
+'use strict';
+
 import * as vscode from "vscode";
 import { getEditor, occurType } from "./util";
-import { tmpdir } from "os";
+import { networkInterfaces, tmpdir } from "os";
 import { promises as fs } from "fs";
 
 export let targetBuffer: vscode.TextEditor;
@@ -153,3 +155,5 @@ export async function activate(context: vscode.ExtensionContext) {
   });
 }
 export function deactivate() {}
+
+
